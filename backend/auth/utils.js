@@ -26,7 +26,7 @@ const calculateTokensCost = (req) => {
   return cost;
 };
 
-const checkExceedsLimit = async (req, res, next) => {
+const checkExceedsLimit = async (req, res) => {
   const tokens = calculateTokensCost(req);
   const [success, remainingTokens] = await getTokens(req.user.google_id);
 
@@ -35,12 +35,12 @@ const checkExceedsLimit = async (req, res, next) => {
   if (success) {
     if (remainingTokens >= tokens) {
       req.user["cost"] = tokens;
-      return next();
+      return false;
     }
   }
 
   console.log("Exceeded Token Limit");
-  return res.status(400).send();
+  return res.status(402).send();
 };
 
 const logout = async (req, res) => {
@@ -115,11 +115,11 @@ const deductTokens = async (tokens, req, res) => {
         remainingTokens
       );
 
-      return res.status(401).send();
+      return res.status(400).send();
     }
   } catch (e) {
     console.log("Error deducting tokens", e);
-    return res.status(401).send();
+    return res.status(400).send();
   }
 };
 

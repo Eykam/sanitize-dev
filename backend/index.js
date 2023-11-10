@@ -13,6 +13,7 @@ const {
   logout,
   login,
   checkAuthenticated,
+  checkExceedsLimit,
   deductTokens,
   logRequest,
 } = require("./auth/utils");
@@ -156,7 +157,7 @@ app.use(
           );
       });
     },
-    onProxyReq: (proxyReq, req, res) => {
+    onProxyReq: async (proxyReq, req, res) => {
       const contentType = proxyReq.getHeader("Content-Type");
 
       let bodyData;
@@ -172,6 +173,13 @@ app.use(
       if (bodyData) {
         proxyReq.setHeader("Content-Length", Buffer.byteLength(bodyData));
         proxyReq.write(bodyData);
+      }
+
+      if (req.path === "/file") {
+        const exceedsLimit = await checkExceedsLimit(req, res);
+        console.log(
+          `User ${req.user.google_id}'s transaction exceedsLimit: ${exceedsLimit}`
+        );
       }
 
       proxyReq.setHeader("x-uuid", req.user.uuid);
