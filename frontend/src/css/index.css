@@ -1,0 +1,82 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0%;
+  display: flex;
+  background-color: #111111;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  body {
+    width: 100%;
+    margin: 0%;
+    display: flex;
+    background-color: #111111;
+    overflow-y: visible;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+audio {
+  width: 50%;
+}
+
+audio::-webkit-media-controls-enclosure {
+  width: 100%;
+  border-radius: 15px;
+}
+
+audio::-webkit-media-controls {
+  box-shadow: 10px 10px 8px hsla(0, 0%, 9%, 0.38);
+}
+
+video {
+  width: 50%;
+}
+
+video::-webkit-media-controls-enclosure {
+  width: 100%;
+  border-radius: 15px;
+}
+
+video::-webkit-media-controls {
+  box-shadow: 10px 10px 8px hsla(0, 0%, 9%, 0.38);
+}

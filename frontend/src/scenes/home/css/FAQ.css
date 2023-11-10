@@ -1,0 +1,31 @@
+.faq-questions {
+  display: flex;
+  background-color: rgb(120, 120, 120);
+  margin: 1% 0;
+  min-height: 4vh;
+  border-radius: 5px;
+  padding: auto;
+  padding-left: 1%;
+  box-shadow: 6px 5px 5px rgb(40, 40, 40);
+}
+
+.faq-questions:hover {
+  background-color: rgb(95, 95, 95);
+}
+
+.metric {
+  display: flex;
+  font-weight: bold;
+  background-color: rgb(120, 120, 120);
+  min-height: 20vh;
+  padding: 2%;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 6px 5px 5px rgb(40, 40, 40);
+  margin: 2%;
+}
+
+.metric:hover {
+  background-color: rgb(95, 95, 95);
+}

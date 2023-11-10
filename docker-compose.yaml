@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  sanitize-backend-dev:
+    image: sanitize-backend-image-dev
+    container_name: sanitize-backend-container-dev
+    networks:
+      - sanitize-app-dev
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+    expose:
+      - 4000
+
+  nginx-dev:
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    ports:
+      - 5000:80
+    networks:
+      - sanitize-app-dev
+    depends_on:
+      - sanitize-backend-dev
+      - sanitize-frontend-dev
+    deploy:
+      restart_policy:
+        condition: always
+
+  sanitize-frontend-dev:
+    image: sanitize-frontend-image-dev
+    container_name: sanitize-frontend-container-dev
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    environment:
+      WATCHPACK_POLLING: true
+    command: npm run start
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile
+    expose:
+      - 3000
+    networks:
+      - sanitize-app-dev
+
+networks:
+  sanitize-app-dev:
+    driver: bridge

@@ -1,0 +1,78 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.75%;
+}
+.loading {
+  position: relative;
+  z-index: 0;
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    top: -10px;
+  }
+  25% {
+    top: 10px;
+  }
+  50% {
+    top: -10px;
+  }
+  75% {
+    top: 10px;
+  }
+}
+
+.loading .x {
+  position: absolute;
+  animation: loading 1.5s ease-in-out infinite;
+  width: 6px;
+  height: 6px;
+}
+.loading .x:nth-child(1) {
+  left: 0px;
+  background-color: rgb(218, 218, 218);
+  animation-delay: 0s;
+}
+.loading .x:nth-child(2) {
+  left: 5px;
+  background-color: rgb(190, 190, 190);
+  animation-delay: 0.1s;
+}
+.loading .x:nth-child(3) {
+  left: 10px;
+  background-color: rgb(175, 175, 175);
+  animation-delay: 0.2s;
+}
+.loading .x:nth-child(4) {
+  left: 15px;
+  background-color: rgb(160, 160, 160);
+  animation-delay: 0.3s;
+}
+.loading .x:nth-child(5) {
+  left: 20px;
+  background-color: rgb(145, 145, 145);
+
+  animation-delay: 0.4s;
+}
+.loading .x:nth-child(6) {
+  left: 25px;
+  background-color: rgb(130, 130, 130);
+
+  animation-delay: 0.5s;
+}
+.loading .x:nth-child(7) {
+  left: 30px;
+  background-color: rgb(115, 115, 115);
+
+  animation-delay: 0.6s;
+}
+.loading .x:nth-child(8) {
+  left: 35px;
+
+  background-color: rgb(100, 100, 100);
+  animation-delay: 0.7s;
+}

@@ -1,0 +1,95 @@
+.submit-form {
+  background-color: rgb(68, 68, 68);
+  color: rgb(226, 226, 226);
+  padding-top: 0px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border: rgb(59, 59, 59) solid 4px;
+  box-shadow: 10px 10px 8px hsla(0, 0%, 9%, 0.38);
+  border-radius: 5px;
+}
+
+.mobile-submit-form {
+  /* background-color: rgb(40, 40, 40); */
+  color: rgb(226, 226, 226);
+  width: 90vw;
+  height: fit-content;
+  margin: 2% 0;
+  display: block;
+}
+
+#back-button {
+  background: none;
+  color: rgb(226, 226, 226);
+  font-size: xx-large;
+  border: none;
+}
+
+#back-button:hover {
+  color: rgb(129, 129, 129);
+}
+
+.audio-side-buttons {
+  height: 6vh;
+  width: 25%;
+  border-radius: 15px;
+  background: #ececec;
+}
+
+.audio-side-buttons-auto {
+  height: 6vh;
+  width: 25%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background: #ececec;
+}
+
+.audio-side-buttons-manual {
+  height: 6vh;
+  width: 25%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: #3d3d3d;
+  color: #ececec;
+}
+
+.audio-controls-div {
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-outer {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-inner {
+  height: 10vh;
+  width: 27%;
+  border: rgb(59, 59, 59) solid 4px;
+  padding: 1%;
+  box-shadow: 10px 10px 8px hsla(0, 0%, 9%, 0.38);
+  border-radius: 15px;
+}
+
+.settings-textarea {
+  height: 10vh;
+  width: 65%;
+  padding: 1%;
+  box-shadow: 10px 10px 8px hsla(0, 0%, 9%, 0.38);
+  border-radius: 15px;
+}
+
+/* .form-outer {
+  width: "50vw";
+  margin-left: "auto";
+  margin-right: "auto";
+  max-height: "155vh";
+  align-items: "center";
+} */
