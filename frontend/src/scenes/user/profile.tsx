@@ -1,12 +1,13 @@
-import React from "react";
-import { useAppSelector } from "../../store/store";
+import React, { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../store/store";
 import { FixedSizeList as List } from "react-window";
 import { Paper, Box, CircularProgress, Typography } from "@mui/material";
 import ListItem from "./ListItem";
-import { RequestHistory } from "../../store/features/userSlice";
+import { RequestHistory, checkLoggedIn } from "../../store/features/userSlice";
 
 const Profile = () => {
   const user = useAppSelector((state) => state.user.userDetails);
+  const dispatch = useAppDispatch();
 
   const checkMobile = () => {
     return window.innerWidth <= 1200;
@@ -22,6 +23,10 @@ const Profile = () => {
     const hue = (percentage * 120).toString(10);
     return ["hsl(", hue, ",100%,50%)"].join("");
   };
+
+  useEffect(() => {
+    dispatch(checkLoggedIn(null));
+  }, [dispatch]);
 
   const TokenDisplay = () => {
     return (
@@ -137,6 +142,7 @@ const Profile = () => {
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
+            boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 15px",
           }}
         >
           <h2
@@ -167,6 +173,7 @@ const Profile = () => {
             position: "relative",
             justifyContent: "center",
             alignItems: "center",
+            boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 15px",
           }}
         >
           <h2
@@ -197,6 +204,7 @@ const Profile = () => {
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
+            boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 15px",
           }}
         >
           <h2

@@ -125,9 +125,13 @@ const onFileCallback = async (data, req, res, originalname) => {
   return false;
 };
 
+const onTranscriptionFailure = (req, res) => {
+  console.log(`User ${req.user.google_id}'s transaction failed, refunding`);
+  // res.redirect("/error");
+};
+
 // const onFileFailure = () => {};
 // const onTranscriptionSuccess = () => {};
-// const onTranscriptionFailure = () => {};
 // const onCensorSuccess = () => {};
 // const onCensorFailure = () => {};
 
@@ -155,6 +159,9 @@ app.use(
             res,
             proxyRes.headers["original-name"]
           );
+        else if (req.path === "/fetchTranscription") {
+          if (data.includes("failed")) onTranscriptionFailure(req, res);
+        }
       });
     },
     onProxyReq: async (proxyReq, req, res) => {
@@ -184,6 +191,10 @@ app.use(
 
       proxyReq.setHeader("x-uuid", req.user.uuid);
       proxyReq.setHeader("x-user", req.user.google_id);
+    },
+    onError: (err, req, res) => {
+      console.log("Error in proxying inference server at", req.path);
+      res.redirect("/error");
     },
   })
 );

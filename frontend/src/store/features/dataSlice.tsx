@@ -128,13 +128,16 @@ export const sendFile = createAsyncThunk(
         });
 
         console.log("Sendfile data: ", data);
-        if (data.status === 200) return fulfillWithValue(await data.text());
-        else rejectWithValue(new Error("empty response from server"));
+        if (data.status === 402) return rejectWithValue(402);
+
+        return fulfillWithValue(await data.text());
       }
 
-      return rejectWithValue(new Error("Either no file or empty file name"));
+      console.log("Either no file or empty file name");
+      return rejectWithValue(400);
     } catch (e) {
-      return rejectWithValue(e as Error);
+      console.log("Error in sendfile:", e);
+      return rejectWithValue(400);
     }
   }
 );
@@ -163,6 +166,7 @@ export const fetchTranscription = createAsyncThunk(
           body: body,
         });
 
+        if (data.status === 400) return rejectWithValue(new Error("Error"));
         let res = (await data.json()) as TranscriptionResponse;
 
         return fulfillWithValue(res);
@@ -193,6 +197,8 @@ export const fetchCensorship = createAsyncThunk(
         // mode: "cors",
         body: body,
       });
+
+      if (data.status === 400) return rejectWithValue(new Error("Error"));
 
       const censoredBlob = await data.blob();
       const censoredURL = URL.createObjectURL(censoredBlob);
@@ -420,9 +426,11 @@ export const dataSlice = createSlice({
 
     builder.addCase(sendFile.rejected, (state: DataState, action) => {
       console.log("sendFile rejected...");
-      console.log("Error: ", action.payload);
+      const status = action.payload as Number;
+      console.log("Error: ", status);
       state.sendFile.status = RequestStates.error;
-      state.sendFile.error = action.error as Error;
+      if (status === 402) window.location.href = "/upgrade";
+      else window.location.href = "/error";
     });
 
     builder.addCase(fetchTranscription.pending, (state: DataState, action) => {
@@ -446,6 +454,7 @@ export const dataSlice = createSlice({
       console.log("Error: ", action.payload);
       state.transcription.status = RequestStates.error;
       state.transcription.error = action.payload as Error;
+      window.location.href = "/error";
     });
 
     builder.addCase(fetchCensorship.pending, (state: DataState, action) => {
@@ -465,6 +474,7 @@ export const dataSlice = createSlice({
       console.log("Error: ", action.payload);
       state.censorship.status = RequestStates.error;
       state.censorship.error = action.payload as Error;
+      window.location.href = "/error";
     });
   },
 });
