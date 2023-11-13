@@ -22,6 +22,13 @@ const Header = () => {
     return window.innerWidth < 1200;
   };
 
+  const calculateColor = () => {
+    const percentage = user ? user.tokens / user.tokenLimit : 0;
+
+    const hue = (percentage * 120).toString(10);
+    return ["hsl(", hue, ",100%,50%)"].join("");
+  };
+
   const getProfileImage = () => {
     if (user) return user["picture"];
     else return "";
@@ -67,11 +74,27 @@ const Header = () => {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
+          <span
+            style={{
+              color: "gray",
+              fontWeight: "bolder",
+            }}
+          >
+            {" "}
+            <span
+              style={{
+                color: calculateColor(),
+              }}
+            >
+              {" "}
+              {user.tokens.toFixed(2)}{" "}
+            </span>
+            {" / " + user.tokenLimit}{" "}
+          </span>
           <UserMenu img={getProfileImage()} />
         </div>
       ) : (
