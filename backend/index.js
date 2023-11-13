@@ -182,15 +182,15 @@ app.use(
         proxyReq.write(bodyData);
       }
 
+      proxyReq.setHeader("x-uuid", req.user.uuid);
+      proxyReq.setHeader("x-user", req.user.google_id);
+
       if (req.path === "/file") {
         const exceedsLimit = await checkExceedsLimit(req, res);
         console.log(
           `User ${req.user.google_id}'s transaction exceedsLimit: ${exceedsLimit}`
         );
       }
-
-      proxyReq.setHeader("x-uuid", req.user.uuid);
-      proxyReq.setHeader("x-user", req.user.google_id);
     },
     onError: (err, req, res) => {
       console.log("Error in proxying inference server at", req.path);
