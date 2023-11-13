@@ -6,6 +6,7 @@ import ListItem from "./ListItem";
 import { RequestHistory, checkLoggedIn } from "../../store/features/userSlice";
 
 const Profile = () => {
+  const date = new Date();
   const user = useAppSelector((state) => state.user.userDetails);
   const dispatch = useAppDispatch();
 
@@ -159,6 +160,31 @@ const Profile = () => {
           </h2>
 
           {TokenDisplay()}
+
+          <h3
+            style={{
+              display: "block",
+              width: "100%",
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              margin: "2%",
+              color: "lightgray",
+              textOverflow: "ellipsis",
+            }}
+          >
+            Refresh:
+            <span
+              style={{
+                color: "gray",
+                fontSize: "80%",
+                marginLeft: "2%",
+                width: "80%",
+              }}
+            >
+              {user?.nextRefresh}
+            </span>
+          </h3>
         </Paper>
       </Box>
 
@@ -219,15 +245,6 @@ const Profile = () => {
           >
             Sessions
           </h2>
-
-          <Typography
-            variant="caption"
-            fontSize="1.5rem"
-            fontWeight="bolder"
-            color="rgb(80,80,80)"
-          >
-            Coming Soon...
-          </Typography>
         </Paper>
       </Box>
     </Box>

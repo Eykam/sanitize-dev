@@ -6,7 +6,7 @@
   border-radius: 5px;
   padding: auto;
   padding-left: 1%;
-  box-shadow: 6px 5px 5px rgb(40, 40, 40);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
 .faq-questions:hover {
@@ -22,7 +22,7 @@
   align-items: center;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 6px 5px 5px rgb(40, 40, 40);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   margin: 2%;
 }
 

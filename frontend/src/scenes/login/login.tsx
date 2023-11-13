@@ -23,6 +23,7 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
       }}
     >
       <Paper

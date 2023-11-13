@@ -80,7 +80,8 @@ const Description = () => {
             fontWeight: "bold",
             color: "lightgrey",
             border: "solid 2px lightgrey",
-            boxShadow: "6px 5px 5px rgb(40,40,40)",
+            boxShadow: "rgba(70, 70, 70, 0.6) 0px 5px 15px",
+            // boxShadow: "6px 5px 5px rgb(40,40,40)",
             cursor: "pointer",
           }}
           onMouseOver={(e) => {

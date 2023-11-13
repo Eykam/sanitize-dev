@@ -99,7 +99,7 @@ const FileInfo = () => {
               src={file.fileUrl}
               style={{
                 width: "100%",
-                borderRadius: "5px",
+                borderRadius: checkBrowser() ? "15px" : "5px",
                 marginTop: "auto",
               }}
             />
@@ -112,7 +112,7 @@ const FileInfo = () => {
               src={file?.fileUrl}
               style={{
                 width: "100%",
-                borderRadius: "5px",
+                borderRadius: checkBrowser() ? "15px" : "5px",
                 marginTop: "auto",
               }}
             />

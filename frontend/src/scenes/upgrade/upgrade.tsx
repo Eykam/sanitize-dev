@@ -28,13 +28,16 @@ const Upgrade = () => {
     const clickHandler = tierInfo ? tierInfo.onClick : selectFree;
 
     return (
-      <Box gridColumn="span 2">
+      <Box
+        gridColumn={checkMobile() ? "span 6" : "span 2"}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <Paper
           style={{
             display: "flex",
             flexDirection: "column",
-            width: checkMobile() ? "60vw" : "15vw",
-            height: checkMobile() ? "40vh" : "50vh",
+            width: checkMobile() ? "80vw" : "15vw",
+            height: checkMobile() ? "50vh" : "50vh",
             background: "rgb(70,70,70)",
             color: "lightgray",
             boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 15px",
@@ -46,7 +49,7 @@ const Upgrade = () => {
             style={{
               color: "rgb(120,120,120)",
               fontWeight: "bolder",
-              height: "80%",
+              height: checkMobile() ? "70%" : "80%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -87,15 +90,15 @@ const Upgrade = () => {
   return (
     <Box
       style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
+        height: checkMobile() ? "fit-content" : "100%",
+        width: checkMobile() ? "90%" : "50%",
         justifyContent: "center",
         alignItems: "center",
+        margin: "5% 0",
       }}
       display="grid"
       gridTemplateColumns="repeat(6,1fr)"
-      gap="2%"
+      gap={"20px"}
     >
       <TierComponent tier="Free" />
       <TierComponent tier="Pro" />

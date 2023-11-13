@@ -9,7 +9,13 @@ body {
   width: 100%;
   margin: 0%;
   display: flex;
-  background-color: #111111;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(24, 24, 24, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
   overflow-x: hidden;
   overflow-y: visible;
 }
@@ -22,7 +28,7 @@ body::-webkit-scrollbar {
     width: 100%;
     margin: 0%;
     display: flex;
-    background-color: #111111;
+    /* background-color: #111111; */
     overflow-y: visible;
   }
 }

@@ -38,6 +38,7 @@ const Error = () => {
           padding: "5%",
           justifyContent: "center",
           alignItems: "center",
+          boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
         }}
       >
         <IconButton>

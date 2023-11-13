@@ -35,6 +35,7 @@ export interface UserDetails {
   uuid: string;
   tokenLimit: number;
   request: RequestHistory[];
+  nextRefresh: string;
 }
 
 export interface BooleanResponse {
@@ -136,11 +137,18 @@ export const userSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(checkLoggedIn.fulfilled, (state, action) => {
-      console.log("CheckLoggedIn fulfilled. Updating userDetails...");
       if (action.payload) {
+        const nextRefresh = Number(action.payload.nextRefresh) * 1000;
+
+        console.log("nextRefresh");
+        let date = new Date();
+        let dateString = new Date(date.getTime() + nextRefresh).toString();
+
+        console.log("nextRefreshValue" + dateString);
+
         state.userDetails = action.payload;
+        state.userDetails["nextRefresh"] = dateString;
         console.log("User Details:", action.payload);
-        localStorage.setItem("csrf", action.payload.csrf);
       }
     });
     builder.addCase(checkLoggedIn.rejected, (state, action) => {

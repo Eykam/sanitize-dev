@@ -60,7 +60,7 @@ const Dashboard = ({
           color: "rgb(226, 226, 226)",
           padding: "1%",
           background: "rgb(65, 65, 65)",
-          boxShadow: "6px 5px 5px rgb(35,35,35)",
+          boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
         }}
       >
         {/* Word Selection */}
@@ -300,6 +300,8 @@ const Dashboard = ({
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
+                borderRadius: "15px",
+                boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
               }}
             >
               <VideoCard file={file} />
@@ -312,6 +314,8 @@ const Dashboard = ({
                   margin: "2% 0",
                   color: "lightgray",
                   height: "22vh",
+                  boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
+                  borderRadius: "15px",
                 }}
               >
                 <WordCard
@@ -326,6 +330,8 @@ const Dashboard = ({
                 background: "rgb(70,70,70)",
                 margin: "2% 0",
                 color: "lightgray",
+                boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
+                borderRadius: "15px",
               }}
             >
               <SelectorContainer
@@ -341,11 +347,13 @@ const Dashboard = ({
                 style={{
                   height: "fit-content",
                   background: "none",
-                  boxShadow: "none",
+                  boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
                   border: "none",
                 }}
               >
-                <div style={{ width: "10%", float: "right" }}>
+                <div
+                  style={{ width: "10%", float: "right", borderRadius: "15px" }}
+                >
                   <CensorSubmit downloaded={undefined} />
                 </div>
               </Paper>
@@ -412,19 +420,31 @@ const Dashboard = ({
               </Paper>
             </Box>
 
-            <Box gridRow="span 1" gridColumn="span 16">
+            <Box
+              gridRow="span 1"
+              gridColumn="span 16"
+              style={{ borderRadius: "15px" }}
+            >
               <Paper
                 style={{
                   color: "lightgray",
                   background: "none",
                   padding: "2%",
+                  borderRadius: "15px",
                 }}
               >
                 <CensoredVideo />
               </Paper>
             </Box>
 
-            <Box gridRow="span 1" gridColumn="span 16">
+            <Box
+              gridRow="span 1"
+              gridColumn="span 16"
+              style={{
+                boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
+                borderRadius: "15px",
+              }}
+            >
               <CensoredResults />
             </Box>
 
@@ -435,6 +455,8 @@ const Dashboard = ({
                   padding: "1%",
                   width: "30%",
                   marginLeft: "auto",
+                  boxShadow: "rgba(0, 0, 0, 0.5) 0px 5px 10px",
+                  borderRadius: "15px",
                 }}
               >
                 <CensorSubmit downloaded={userDownloaded} />

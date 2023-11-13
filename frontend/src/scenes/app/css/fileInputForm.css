@@ -30,7 +30,7 @@
   border-style: solid;
   border-color: #cbd5e1;
   background-color: #f8fafc;
-  box-shadow: 10px 5px 5px rgb(50, 50, 50);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 10px;
 }
 
 #label-file-upload.drag-active {
