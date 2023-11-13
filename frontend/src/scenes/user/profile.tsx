@@ -245,6 +245,16 @@ const Profile = () => {
           >
             Sessions
           </h2>
+          <span
+            style={{
+              color: "rgb(90,90,90)",
+              fontSize: "150%",
+              fontWeight: "bolder",
+            }}
+          >
+            {" "}
+            Coming soon...
+          </span>
         </Paper>
       </Box>
     </Box>
