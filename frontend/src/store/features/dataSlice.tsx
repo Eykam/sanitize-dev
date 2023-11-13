@@ -429,7 +429,7 @@ export const dataSlice = createSlice({
       const status = action.payload as Number;
       console.log("Error: ", status);
       state.sendFile.status = RequestStates.error;
-      if (status === 402) window.location.href = "/upgrade";
+      if (status === 402) window.location.href = "/limited";
       else window.location.href = "/error";
     });
 

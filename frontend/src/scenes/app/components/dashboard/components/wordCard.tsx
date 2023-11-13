@@ -7,6 +7,7 @@ import {
   Button,
   Checkbox,
   IconButton,
+  Tooltip,
 } from "@mui/material";
 import { WordList } from "../../../../../store/features/formSlice";
 import {
@@ -22,6 +23,7 @@ import {
   removeSuggestedWords,
   removeUnselectedWords,
 } from "../../../../../store/features/dataSlice";
+import Zoom from "@mui/material/Zoom";
 
 export const Callers = {
   unselected: "unselected",
@@ -494,43 +496,77 @@ const WordCard = ({ word, caller }: { word: string; caller: string }) => {
                     <div style={{ display: "flex", marginLeft: "auto" }}>
                       {caller === Callers.unselected ||
                       caller === Callers.suggested ? (
-                        <Button
-                          variant="contained"
-                          style={{
-                            margin: "auto 0",
-                            marginLeft: "auto",
-                            height: "70%",
-                            color: "lightgray",
-                            backgroundColor: "rgb(80,80,80)",
-                            visibility:
-                              checkList[word] &&
-                              checkList[word]["timestamps"].length >= 1
-                                ? "visible"
-                                : "hidden",
+                        <Tooltip
+                          title={
+                            "Add selected timestamps for current word to 'To Censor'. This action will mark these timestamps for censorship when submitting"
+                          }
+                          enterNextDelay={1250}
+                          enterDelay={1250}
+                          enterTouchDelay={1250}
+                          TransitionComponent={Zoom}
+                          componentsProps={{
+                            tooltip: {
+                              sx: {
+                                bgcolor: "rgb(30,30,30)",
+                              },
+                            },
                           }}
-                          onClick={censor}
                         >
-                          CENSOR
-                        </Button>
+                          <Button
+                            variant="contained"
+                            style={{
+                              margin: "auto 0",
+                              marginLeft: "auto",
+                              height: "70%",
+                              color: "lightgray",
+                              backgroundColor: "rgb(80,80,80)",
+                              visibility:
+                                checkList[word] &&
+                                checkList[word]["timestamps"].length >= 1
+                                  ? "visible"
+                                  : "hidden",
+                            }}
+                            onClick={censor}
+                          >
+                            CENSOR
+                          </Button>
+                        </Tooltip>
                       ) : (
-                        <Button
-                          variant="contained"
-                          style={{
-                            margin: "auto 0",
-                            marginLeft: "auto",
-                            height: "70%",
-                            color: "lightgray",
-                            backgroundColor: "rgb(80,80,80)",
-                            visibility:
-                              checkList[word] &&
-                              checkList[word]["timestamps"].length >= 1
-                                ? "visible"
-                                : "hidden",
+                        <Tooltip
+                          title={
+                            "Add selected timestamps for current word to 'Words'. This action will stop these timestamps from being censored when submitting"
+                          }
+                          enterNextDelay={1250}
+                          enterDelay={1250}
+                          enterTouchDelay={1250}
+                          TransitionComponent={Zoom}
+                          componentsProps={{
+                            tooltip: {
+                              sx: {
+                                bgcolor: "rgb(30,30,30)",
+                              },
+                            },
                           }}
-                          onClick={keep}
                         >
-                          KEEP
-                        </Button>
+                          <Button
+                            variant="contained"
+                            style={{
+                              margin: "auto 0",
+                              marginLeft: "auto",
+                              height: "70%",
+                              color: "lightgray",
+                              backgroundColor: "rgb(80,80,80)",
+                              visibility:
+                                checkList[word] &&
+                                checkList[word]["timestamps"].length >= 1
+                                  ? "visible"
+                                  : "hidden",
+                            }}
+                            onClick={keep}
+                          >
+                            KEEP
+                          </Button>
+                        </Tooltip>
                       )}
                     </div>
                   </div>

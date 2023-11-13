@@ -18,9 +18,10 @@ import {
   updateWord,
 } from "../../../../../store/features/formSlice";
 import { FixedSizeList as List } from "react-window";
-import { Paper, Button, Checkbox } from "@mui/material";
+import { Paper, Button, Checkbox, Tooltip } from "@mui/material";
 import { Callers } from "./wordCard";
 import WordsList from "./wordsList";
+import Zoom from "@mui/material/Zoom";
 //===========================================================  Interfaces ============================================================
 
 interface WordSelectorComponents {
@@ -321,32 +322,64 @@ const UncensoredSelector = ({
               marginLeft: "auto",
             }}
           >
-            <Button
-              variant="contained"
-              style={{
-                padding: "2%",
-                color: "lightgray",
-                marginRight: "4%",
-                backgroundColor: "rgb(80,80,80)",
+            <Tooltip
+              title={"Reset 'Words' and 'To Censor' back to initial state"}
+              enterNextDelay={1250}
+              enterDelay={1250}
+              enterTouchDelay={1250}
+              TransitionComponent={Zoom}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "rgb(30,30,30)",
+                  },
+                },
               }}
-              onClick={reset}
             >
-              Reset
-            </Button>
+              <Button
+                variant="contained"
+                style={{
+                  padding: "2%",
+                  color: "lightgray",
+                  marginRight: "4%",
+                  backgroundColor: "rgb(80,80,80)",
+                }}
+                onClick={reset}
+              >
+                Reset
+              </Button>
+            </Tooltip>
 
-            <Button
-              variant="contained"
-              disabled={Object.keys(checkList).length >= 1 ? false : true}
-              style={{
-                margin: "0",
-                padding: "2%",
-                color: "lightgray",
-                backgroundColor: "rgb(80,80,80)",
+            <Tooltip
+              title={
+                "Press here to add all your selected Words and Timestamps to 'To Censor'. This action will mark these timestamps for censorship when submitting"
+              }
+              enterNextDelay={1250}
+              enterDelay={1250}
+              enterTouchDelay={1250}
+              TransitionComponent={Zoom}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "rgb(30,30,30)",
+                  },
+                },
               }}
-              onClick={confirmSelection}
             >
-              Censor
-            </Button>
+              <Button
+                variant="contained"
+                // disabled={Object.keys(checkList).length >= 1 ? false : true}
+                style={{
+                  margin: "0",
+                  padding: "2%",
+                  color: "lightgray",
+                  backgroundColor: "rgb(80,80,80)",
+                }}
+                onClick={confirmSelection}
+              >
+                Censor
+              </Button>
+            </Tooltip>
           </div>
         </div>
       </div>
@@ -364,7 +397,24 @@ const UncensoredSelector = ({
         }}
       >
         <div style={{ display: "flex" }}>
-          <h4 style={{ margin: "0" }}>AI Suggestions</h4>
+          <Tooltip
+            title={
+              "Words that our Algorithms determined are likely to cause issues with your platforms content guidelines"
+            }
+            enterNextDelay={1250}
+            enterDelay={1250}
+            enterTouchDelay={1250}
+            TransitionComponent={Zoom}
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "rgb(30,30,30)",
+                },
+              },
+            }}
+          >
+            <h4 style={{ margin: "0" }}>AI Suggestions</h4>
+          </Tooltip>
 
           <Checkbox
             size="small"

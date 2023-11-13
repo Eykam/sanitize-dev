@@ -6,7 +6,7 @@ import {
   addUnselectedWords,
   addSuggestedWords,
 } from "../../../../../store/features/dataSlice";
-import { Checkbox, Button } from "@mui/material";
+import { Checkbox, Button, Tooltip } from "@mui/material";
 import { FixedSizeList as List } from "react-window";
 import { Callers } from "./wordCard";
 import WordsList from "./wordsList";
@@ -15,6 +15,7 @@ import {
   updateWord,
   updateTimestamp,
 } from "../../../../../store/features/formSlice";
+import Zoom from "@mui/material/Zoom";
 
 const CensoredSelector = ({
   displayWord,
@@ -228,20 +229,37 @@ const CensoredSelector = ({
             marginBottom: "2%",
           }}
         >
-          <Button
-            variant="contained"
-            disabled={Object.keys(checkList).length >= 1 ? false : true}
-            style={{
-              margin: "0",
-              marginLeft: "auto",
-              padding: "2%",
-              color: "lightgray",
-              backgroundColor: "rgb(80,80,80)",
+          <Tooltip
+            title={
+              "Press here to add all your selected Words and Timestamps form 'To Censor' to 'Words'. This action will mark these timestamps for censorship when submitting"
+            }
+            enterNextDelay={1250}
+            enterDelay={1250}
+            enterTouchDelay={1250}
+            TransitionComponent={Zoom}
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "rgb(30,30,30)",
+                },
+              },
             }}
-            onClick={confirmSelection}
           >
-            KEEP
-          </Button>
+            <Button
+              variant="contained"
+              // disabled={Object.keys(checkList).length >= 1 ? false : true}
+              style={{
+                margin: "0",
+                marginLeft: "auto",
+                padding: "2%",
+                color: "lightgray",
+                backgroundColor: "rgb(80,80,80)",
+              }}
+              onClick={confirmSelection}
+            >
+              KEEP
+            </Button>
+          </Tooltip>
         </div>
         {/* </div> */}
       </div>

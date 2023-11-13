@@ -203,7 +203,7 @@ const SelectorContainer = ({
                 : "none",
           }}
         >
-          <div style={{ padding: "4%" }}>
+          <div id="words" style={{ padding: "4%" }}>
             <b>WORDS</b>
             <label style={{ float: "right", fontSize: "100%", padding: "1px" }}>
               <input

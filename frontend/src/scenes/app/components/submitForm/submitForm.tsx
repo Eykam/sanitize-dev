@@ -11,9 +11,10 @@ import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import SubmitSettings from "./transcribeSubmit";
 import AudioWave from "../../../utils/components/audioWave";
 import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import NotificationsOffOutlinedIcon from "@mui/icons-material/NotificationsOffOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import Zoom from "@mui/material/Zoom";
 
 const SubmitForm = () => {
   const dispatch = useAppDispatch();
@@ -107,30 +108,45 @@ const SubmitForm = () => {
             <CloseIcon />
           </IconButton>
 
-          <IconButton
-            aria-label="get notifications"
-            style={{
-              position: "absolute",
-              top: "0",
-              right: "0",
-              background: "rgb(100, 100, 100)",
-              padding: "1%",
-              margin: "1%",
-              color: notifications
-                ? "rgb(125, 186, 143)"
-                : "rgb(186, 125, 125)",
-            }}
-            // color={notifications ? "success" : "error"}
-            onClick={(e) => {
-              askNotificationPermission(e);
+          <Tooltip
+            title={"Get Notified when Complete!"}
+            enterNextDelay={1250}
+            enterDelay={1250}
+            enterTouchDelay={1250}
+            TransitionComponent={Zoom}
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "rgb(30,30,30)",
+                },
+              },
             }}
           >
-            {notifications ? (
-              <NotificationsNoneOutlinedIcon />
-            ) : (
-              <NotificationsOffOutlinedIcon />
-            )}
-          </IconButton>
+            <IconButton
+              aria-label="get notifications"
+              style={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                background: "rgb(100, 100, 100)",
+                padding: "1%",
+                margin: "1%",
+                color: notifications
+                  ? "rgb(125, 186, 143)"
+                  : "rgb(186, 125, 125)",
+              }}
+              // color={notifications ? "success" : "error"}
+              onClick={(e) => {
+                askNotificationPermission(e);
+              }}
+            >
+              {notifications ? (
+                <NotificationsNoneOutlinedIcon />
+              ) : (
+                <NotificationsOffOutlinedIcon />
+              )}
+            </IconButton>
+          </Tooltip>
 
           <div style={{ display: "flex", alignItems: "center" }}>
             <h1>Analyzing Audio</h1>

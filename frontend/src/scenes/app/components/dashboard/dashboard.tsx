@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Toggle from "../../../utils/components/toggle";
 import { componentIDs } from "../../../../store/features/formSlice";
-import { Box, Paper } from "@mui/material";
 import AudioWave from "../../../utils/components/audioWave";
 import FileDetails from "../utils/fileDetails";
 import { useAppSelector } from "../../../../store/store";
@@ -15,6 +14,9 @@ import Loading from "../../../utils/components/loading";
 import CensoredVideo from "../utils/censoredVideo";
 import CensoredResults from "./components/censoredResults";
 import Redirect from "../../../utils/components/redirect";
+import { Box, IconButton, Paper, Typography, Tooltip } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
+import Zoom from "@mui/material/Zoom";
 
 const Dashboard = ({
   currWords,
